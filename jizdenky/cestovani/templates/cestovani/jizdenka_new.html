@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs">
+{% load bootstrap5 %}
+<head>
+    <meta charset="UTF-8">
+    <title>Nákup jízdenky</title>
+</head>
+<body>
+<h1>Nákup jízdenky</h1>
+<h2>Nabídka destinací:</h2>
+    <ul>
+        <li>1. Praha - 150 Kč</li>
+        <li>2. Vídeň - 200 Kč</li>
+        <li>3. Olomouc - 120 Kč</li>
+        <li>4. Svitavy - 120 Kč</li>
+        <li>5. Zlín - 100 Kč</li>
+        <li>6. Ostrava - 180 Kč</li>
+    </ul>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form layout="horizontal" %}
+    <button type="submit">Založit novou jizdenku</button>
+</form>
+
+<div>
+    Objednávka je: {{ obj }}
+
+
+</div>
+</body>
+</html>
