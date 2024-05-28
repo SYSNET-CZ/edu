@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,21 +19,9 @@
   <!-- Content here -->
     <h1>Nákup jízdenky</h1>
 </div>
-<p>Vybraná destinace: {{ ticket.destination }}</p>
-<p>Cena za osobu: {{ ticket.price}} Kč</p>
-<br>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <label for="order_id">Vyberte destinaci:</label>
-        <select id="order_id" name="order_id">
-            <option value="1">Praha</option>
-            <option value="2">Vídeň</option>
-            <option value="3">Olomouc</option>
-            <option value="4">Svitavy</option>
-            <option value="5">Zlín</option>
-            <option value="6">Ostrava</option>
-        </select>
         <button type="submit">Vytvořit objednávku</button>
     </form>
 <br>

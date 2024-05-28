@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
   <!-- Content here -->
     <h1>Detail jízdenky</h1>
 </div>
-    <p>ID objednávky: {{ order.id }}</p>
+    <p>ID objednávky: {{ order.order.id }}</p>
     <p>Destinace: {{ order.ticket.destination }}</p>
     <p>Cena: {{ order.ticket.price }} Kč</p>
 <br>

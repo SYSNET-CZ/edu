@@ -12,4 +12,4 @@ class TicketModelForm(forms.ModelForm):
 class OrderModelForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ["first_name", "last_name", "email", "amount"]
+        fields = ["first_name", "last_name", "email", "amount", "ticket"]

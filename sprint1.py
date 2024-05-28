@@ -8,6 +8,7 @@ api_key = 'xxAGdpu3nTQUnI5EP7NFfQ'
 endpoint = 'https://service.sysnet.cz/taxonomy/1.0.1'
 headers = {'Accept': 'application/json', api_key_name: api_key}
 
+
 def test_info():
     reply = requests.get(f"{endpoint}/info")
     if reply.status_code != 200:
