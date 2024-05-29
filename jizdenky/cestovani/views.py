@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, reverse, get_object_or_404
 from .forms import OrderModelForm
 from .forms import TicketModelForm
 from .models import Ticket, Order
+from django.http import HttpResponseRedirect
+import uuid
 
 
 def homepage(request):
-    tickets = Ticket.objects.all()
-    return render(request, template_name="cestovani/homepage.html", context={"tickets": tickets})
+    return render(request, template_name="cestovani/homepage.html")
 
 
 # Create your views here.
@@ -15,9 +16,11 @@ def order_new(request):
     if request.method == "POST":
         form = OrderModelForm(request.POST)
         if form.is_valid():
-            order = form.save()
-            print(f"Order created with ID (after save): {order.id}")
-            return redirect(to='order_detail', order_id=order.id)
+            data = form.cleaned_data
+            order = Order(id=uuid.uuid4(), **data)
+            print(order)
+            order.save()
+            return HttpResponseRedirect(reverse('jizdenky:order_detail', args=(order.id,)))
         else:
             print("Form is not valid")
             print(form.errors)
@@ -27,9 +30,13 @@ def order_new(request):
     return render(request, template_name="cestovani/order_new.html", context={"form": form})
 
 
-def order_detail(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
+def order_detail(request, id):
+    order = get_object_or_404(Order, id=id)
     return render(request, template_name="cestovani/order_detail.html", context={"order": order})
+
+
+def order_end(request):
+    return render(request, template_name="cestovani/order_end.html")
 
 
 def order_list(request):

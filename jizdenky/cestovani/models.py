@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Model
+import uuid
 
 
 # Create your models here.
@@ -27,4 +28,7 @@ class Order(Model):
     def __str__(self):
         # return '{0}. {1}: cena:{2} Kč'.format(self.poradi, self.nazev, self.cena)
         # return str(self.nazev)
-        return f"Order{self.id} for {self.ticket.destination}, email: {self.email}"
+        return f"Order: {self.id} for {self.last_name}, destinace: {self.ticket.destination}, email: {self.email}"
+
+    def total(self):
+        return self.amount * self.ticket.price

@@ -8,22 +8,68 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Detail objednávky</title>
     <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
         .container {
         text-align: center;
         }
-    p    {text-indent: 300px; margin: 0px;}
-    </style>
+    p    {text-align: center; margin: 0px;}
 
+    </style>
 </head>
 <body>
 <div class="container p-3 my-5 bg-dark text-white">
   <!-- Content here -->
-    <h1>Detail jízdenky</h1>
+    <h1>Detail objednávky</h1>
 </div>
-    <p>ID objednávky: {{ order.order.id }}</p>
-    <p>Destinace: {{ order.ticket.destination }}</p>
-    <p>Cena: {{ order.ticket.price }} Kč</p>
-<br>
-
+    <p>ID objednávky: {{ order.id }}</p>
+<div class="container mt-3">
+    <table>
+        <tr>
+            <th>Jméno</th>
+            <td>{{ order.first_name }}</td>
+        </tr>
+        <tr>
+            <th>Příjmení</th>
+            <td>{{ order.last_name }}</td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td>{{ order.email }}</td>
+        </tr>
+        <tr>
+            <th>Destinace</th>
+            <td>{{ order.ticket.destination }}</td>
+        </tr>
+        <tr>
+            <th>Počet jízdenek</th>
+            <td>{{ order.amount }}</td>
+        </tr>
+        <tr>
+            <th>Cena za kus</th>
+            <td>{{ order.ticket.price }} Kč</td>
+        </tr>
+        <tr>
+            <th>Celková cena</th>
+            <td>{{ order.total }} Kč</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <div class="h3"><p><a href="http://127.0.0.1:8000/cestovani/order_end">Dokončit objednávku</a></p></div>
+</div>
 </body>
 </html>
